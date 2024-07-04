@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Received</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <form action="{% url 'patch_addon' %}" method="post">
+        {% csrf_token %}
+        <div class="horizontal-container" style="margin-bottom: 50px">
+            <h1 style="margin: auto">Register Your add-on</h1>
+        </div>
+        <div class="horizontal-container">
+            <div class="form-group">
+                <label for="battery_health">Battery Health:</label>
+                <input type="text" id="battery_health" name="battery_health" required>
+            </div>
+            <div class="form-group">
+                <label for="camera_health">Camera Health:</label>
+                <input type="text" id="camera_health" name="camera_health" required>
+            </div>
+        </div>
+        <div class="horizontal-container">
+            <div class="form-group">
+                <label for="screen_health">Screen Health:</label>
+                <input type="text" id="screen_health" name="screen_health" required>
+            </div>
+            <div class="form-group">
+                <label for="performance">Performance:</label>
+                <input type="text" id="performance" name="performance" required>
+            </div>
+        </div>
+        <div class="horizontal-container">
+            <div class="form-group">
+                <label for="physical_health">Physical Health:</label>
+                <input type="text" id="physical_health" name="physical_health" required>
+            </div>
+        </div>
+        <input type="text" id="post_token" name="post_token" style="display:none;" value="{{ post_token }}">
+        <input type="text" id="return_url" name="return_url" style="display:none;" value="{{ return_url }}">
+        <div class="horizontal-container" style="margin-top: 30px">
+            <button type="submit" style="margin: auto">Submit</button>
+        </div>
+    </form>
+    <div class="container">
+        <p>Thanks for submitting your post. Now just get to the closest agent to get your phone checked.</p>
+        <a href="https://www.google.com" class="button_link">Nearest Agent</a>
+        <a href="{{ return_url }}" class="button_link">Back to Divar</a>
+    </div>
+</body>
+</html>
